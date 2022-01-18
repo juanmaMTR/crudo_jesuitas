@@ -40,15 +40,15 @@ export class VistaCrear extends Vista{
 	*/
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
-		this.html.div = docPlantilla.getElementsByTagName('div')[0]
-		this.html.iNombre = docPlantilla.getElementsByTagName('input')[0]
-		this.html.btnAceptar = docPlantilla.getElementsByTagName('button')[0]
+		this.html.div=$('div',docPlantilla)	//this.html.div = docPlantilla.getElementsByTagName('div')[0]
+		this.html.iNombre=$('input',docPlantilla)	//this.html.iNombre = docPlantilla.getElementsByTagName('input')[0]
+		this.html.btnAceptar=$('button',docPlantilla)	//this.html.btnAceptar = docPlantilla.getElementsByTagName('button')[0]
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
 	**/
 	asociar(){
-		this.html.btnAceptar.onclick = this.aceptar.bind(this)
+		$(this.html.btnAceptar).click(this.aceptar.bind(this))
 	}
 	/**
 	Atención al botón Aceptar
@@ -66,5 +66,15 @@ export class VistaCrear extends Vista{
 	*/
 	limpiar(){
 		this.html.iNombre = ''
+	}
+	/**Muestra o oculta la vista
+	 * @param mostrar {Boolean} true para mostrar la vista, false para ocultarla
+	 */
+	mostrar(mostrar){
+		if(mostrar){
+			$(this.html.div).show()
+		}else{
+			$(this.html.div).hide()
+		}
 	}
 }
