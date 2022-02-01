@@ -24,7 +24,7 @@ class Crudo{
 		this.modelo = new Modelo(configuracion.bdNombre, configuracion.bdVersion)
 
 		//usamos addEventListener para permitir sobrecargar el evento
-		window.addEventListener('load', this.cargar.bind(this))
+		$(document).ready(this.cargar.bind(this))
 	}
 	/**
 		Carga la vista principal.

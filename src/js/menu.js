@@ -38,14 +38,14 @@ export class Menu extends Vista{
 	*/
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
-		this.html.aListar = docPlantilla.getElementsByTagName('a')[0]
-		this.html.aCrear = docPlantilla.getElementsByTagName('a')[1]
+		this.html.aListar = $('a',docPlantilla)[0]
+		this.html.aCrear = $('a',docPlantilla)[1]
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
 	**/
 	asociar(){
-		this.html.aListar.onclick = this.controlador.listar.bind(this.controlador)
-		this.html.aCrear.onclick = this.controlador.verCrear.bind(this.controlador)
+		$(this.html.aListar).click(this.controlador.listar.bind(this.controlador))
+		$(this.html.aCrear).click(this.controlador.verCrear.bind(this.controlador))
 	}
 }
